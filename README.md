@@ -15,13 +15,8 @@ This is a solo student project to recreate the classic Snake game using React, w
 - **Responsive Design**: The game interface is styled with Sass for a responsive and clean look.
 
 ## Technologies Used
-- **Frontend**:
-  - React
-  - JavaScript
-  - Sass
-- **Tools**:
-  - npm
-  - Node.js (for managing dependencies)
+- **Frontend**: React, JavaScript, Sass
+- **Tools**: Node.js, npm
 
 ## Installation
 
