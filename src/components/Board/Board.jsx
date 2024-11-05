@@ -5,8 +5,10 @@ import s from "./Board.module.scss";
 import Food from "../Food/Food";
 import { generateRandomCoordinates } from "../../utils/utils";
 import GameOver from "../GameOver/GameOver";
+import useStore from "../../utils/store";
 
 const Board = () => {
+    const { mod } = useStore();
     const [snakeData, setSnakeData] = useState([
         [0, 0],
         [10, 0],
@@ -201,7 +203,7 @@ const Board = () => {
     const addFood = () => {
         //console.log("add food");
         //génération cooredonnées
-        const coordinates = generateRandomCoordinates();
+        const coordinates = generateRandomCoordinates(mod);
         
         //maj du state
         setFoodArray((oldFoodArray) => [...oldFoodArray, coordinates]);
