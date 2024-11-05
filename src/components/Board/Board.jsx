@@ -3,12 +3,12 @@ import Snake from "../Snake/Snake";
 import gsap from "gsap";
 import s from "./Board.module.scss";
 import Food from "../Food/Food";
-import { generateRandomCoordinates } from "../../utils/utils";
+import { defaultControls, generateRandomCoordinates, reversedControls } from "../../utils/utils";
 import GameOver from "../GameOver/GameOver";
 import useStore from "../../utils/store";
 
 const Board = () => {
-    const { mod } = useStore();
+    const { mod, removeMod } = useStore();
     const [snakeData, setSnakeData] = useState([
         [0, 0],
         [10, 0],
@@ -143,61 +143,9 @@ const Board = () => {
         if (canChangeDirection.current === false) return;
         canChangeDirection.current = false;
         
-        switch (e.keyCode) {
-            case 90:
-            //console.log("going up");
-            if(direction.current !== "DOWN") {
-                direction.current = "UP";
-            }
-            //Going up
-            break;
-            case 83:
-            if(direction.current !== "UP") {
-                direction.current = "DOWN";
-            }
-            //Going down
-            break;
-            case 81:
-            if(direction.current !== "RIGHT") {
-                direction.current = "LEFT";
-            }
-            //Going left
-            break;
-            case 68:
-            if(direction.current !== "LEFT") {
-                direction.current = "RIGHT";
-            }
-            //Going right
-            break;
-            
-            case 38:
-            if(direction.current !== "DOWN") {
-                direction.current = "UP";
-            }
-            //Going up
-            break;
-            case 40:
-            if(direction.current !== "UP") {
-                direction.current = "DOWN";
-            }
-            //Going down
-            break;
-            case 37:
-            if(direction.current !== "RIGHT") {
-                direction.current = "LEFT";
-            }
-            //Going left
-            break;
-            case 39:
-            if(direction.current !== "LEFT") {
-                direction.current = "RIGHT";
-            }
-            //Going right
-            break;
-            
-            default:
-            break;
-        }
+        mod.includes("reversed")
+        ? reversedControls(e, direction)
+        : defaultControls(e, direction);
     };
     
     const addFood = () => {
@@ -221,7 +169,7 @@ const Board = () => {
             addFood();
         }
         
-        if (timer.current > speed) {
+        if (timer.current > (mod.includes("impossible") ? 0.02 : speed)) {
             //console.log("move snake");
             timer.current = 0;
             moveSnake();
@@ -231,6 +179,9 @@ const Board = () => {
     
     const replay = () => {
         //replay game
+        removeMod("corner");
+        removeMod("impossible");
+        removeMod("reversed");
         
         //reset game
         setGameOver(false);

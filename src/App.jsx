@@ -7,6 +7,8 @@ function App() {
             <Board />
             <div className="toggle-wrapper">
             <Toggle mod={"corner"} />
+            <Toggle mod={"impossible"} />
+            <Toggle mod={"reversed"} />
             </div>
         </div>
     )

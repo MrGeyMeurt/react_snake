@@ -1,5 +1,121 @@
 import uniqid from "uniqid";
 
+export const reversedControls = (e, direction) => {
+    switch (e.keyCode) {
+        case 90:
+        //console.log("going up");
+        if(direction.current !== "UP") {
+            direction.current = "DOWN";
+        }
+        //Going up
+        break;
+        case 83:
+        if(direction.current !== "DOWN") {
+            direction.current = "UP";
+        }
+        //Going down
+        break;
+        case 81:
+        if(direction.current !== "LEFT") {
+            direction.current = "RIGHT";
+        }
+        //Going left
+        break;
+        case 68:
+        if(direction.current !== "RIGHT") {
+            direction.current = "LEFT";
+        }
+        //Going right
+        break;
+        
+        case 38:
+        if(direction.current !== "UP") {
+            direction.current = "DOWN";
+        }
+        //Going up
+        break;
+        case 40:
+        if(direction.current !== "DOWN") {
+            direction.current = "UP";
+        }
+        //Going down
+        break;
+        case 37:
+        if(direction.current !== "LEFT") {
+            direction.current = "RIGHT";
+        }
+        //Going left
+        break;
+        case 39:
+        if(direction.current !== "RIGHT") {
+            direction.current = "LEFT";
+        }
+        //Going right
+        break;
+        
+        default:
+        break;
+    }
+}
+
+export const defaultControls = (e, direction) => {
+    switch (e.keyCode) {
+        case 90:
+        //console.log("going up");
+        if(direction.current !== "DOWN") {
+            direction.current = "UP";
+        }
+        //Going up
+        break;
+        case 83:
+        if(direction.current !== "UP") {
+            direction.current = "DOWN";
+        }
+        //Going down
+        break;
+        case 81:
+        if(direction.current !== "RIGHT") {
+            direction.current = "LEFT";
+        }
+        //Going left
+        break;
+        case 68:
+        if(direction.current !== "LEFT") {
+            direction.current = "RIGHT";
+        }
+        //Going right
+        break;
+        
+        case 38:
+        if(direction.current !== "DOWN") {
+            direction.current = "UP";
+        }
+        //Going up
+        break;
+        case 40:
+        if(direction.current !== "UP") {
+            direction.current = "DOWN";
+        }
+        //Going down
+        break;
+        case 37:
+        if(direction.current !== "RIGHT") {
+            direction.current = "LEFT";
+        }
+        //Going left
+        break;
+        case 39:
+        if(direction.current !== "LEFT") {
+            direction.current = "RIGHT";
+        }
+        //Going right
+        break;
+        
+        default:
+        break;
+    }
+}
+
 export const generateRandomCoordinates = (mod) => {
     //console.log("generate random");
     //console.log(mod);

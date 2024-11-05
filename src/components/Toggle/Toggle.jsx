@@ -4,26 +4,25 @@ import useStore from "../../utils/store";
 
 const Toggle = ({ mod }) => {
     const { mod: storeMod, addMod, removeMod } = useStore();
-    const [toggle, setToggle] = useState(false);
     
     //console.log(mod);
     
-    useEffect(() => {
-        if (toggle) {
-            addMod(mod);
-        } else {
+    const handleClick = () => {
+        if (storeMod.includes(mod)) {
             removeMod(mod);
+        } else {
+            addMod(mod);
         }
-    }, [toggle]);
+    };
     
     useEffect(() => {
         console.log(storeMod);
     }, [storeMod]);
     
     return (
-        <div className={s.wrapper} onClick={() => setToggle(!toggle)}>
+        <div className={s.wrapper} onClick={() => handleClick()}>
         <div className={s.toggle}>
-        <div className={`${s.switch} ${toggle ? s.switch_active : ""}`}></div>
+        <div className={`${s.switch} ${storeMod.includes(mod) ? s.switch_active : ""}`}></div>
         </div>
         <span className={s.mod}>{mod}</span>
         </div>
