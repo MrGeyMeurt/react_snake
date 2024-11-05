@@ -5,8 +5,8 @@
 This is a solo student project to recreate the classic Snake game using React, with styling in Sass. The game allows the player to control a snake, eating the food (red dots) to grow in size. The game ends if the snake collides with the edges of the board. Future updates are planned to introduce different game modes.
 
 ## Project Status
-- **Current status**: The game is currently under active development.
-- **Future Updates**: New modes and enhancements will be added to improve the user experience.
+- **Current State**: The game is currently under active development.
+- **Planned Updates**: New modes and enhancements will be added to improve the user experience.
 
 ## Features
 - **Classic Snake Gameplay**: The snake moves continuously, and the player controls the direction.
