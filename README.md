@@ -42,8 +42,8 @@ npm start
 
 ## Modding
 To activate a game mod, click on the corresponding toggle button:
-- **Corner**: Food only appears in the four corners of the game area, adding a strategic element to reach these spots without colliding with the walls or the snake's own body.
-- **Impossible**: The snake receives a significant speed boost, making it much harder to control and increasing the challenge.
-- **Reversed**: All controls are inverted, requiring quick adaptation to direct the snake correctly.
+- **Corner**: Food only appears in the four corners of the game area.
+- **Impossible**: The snake receives a significant speed boost.
+- **Reversed**: All controls are inverted.
 >[!TIP]
 >Multiple mods can be activated at the same time, but all mods are reset when the game is restarted.
