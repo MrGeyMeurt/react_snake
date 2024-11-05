@@ -36,7 +36,7 @@ npm start
 
 ## How to Play
 
-- **Control**: Use **arrow** keys or **ZQSD** keys to move the snake.
+- **Control**: Use ``arrow keys`` or ``ZQSD`` keys to move the snake.
 - **Objective**: Eat the food to grow the snake.
 - **Game Over**: Avoid the borders, or the game will end.
 
