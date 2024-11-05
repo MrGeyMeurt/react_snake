@@ -32,7 +32,7 @@ npm start
 ```
 
 >[!WARNING]
->Make sure that you have [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com/) installed to run the game.
+>Make sure that you have **Node.js** and **npm** installed to run the game.
 
 ## How to Play
 
