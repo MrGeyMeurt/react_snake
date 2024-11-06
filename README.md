@@ -23,7 +23,7 @@ A student project to recreate the classic Snake game using React, with styling i
 1. Download or clone the repository.
 2. Navigate to the project directory and install dependencies:
 ```
-cd react-snake-game
+cd react_snake
 npm install
 ```
 3. Start the application with:
