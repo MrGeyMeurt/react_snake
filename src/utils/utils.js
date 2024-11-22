@@ -1,4 +1,47 @@
 import uniqid from "uniqid";
+import gsap from "gsap";
+import useStore from "./store";
+
+const flashbangAudio = new Audio("/audio/csgo-flashbang.mp3");
+
+let flashTween = null;
+
+export const flashUser = () => {
+    //flash user
+    if (flashTween) flashTween.kill();
+    
+    flashbangAudio.currentTime = 0;
+    flashbangAudio.play();
+    document.querySelector(".flashbang").style.opacity = "1";
+    
+    flashTween = gsap.to('.flashbang', {
+        opacity: 0,
+        duration: 2,
+        delay: 0.25,
+    })
+}
+
+export const triggerMode = () => {
+    console.log("effet n2");
+    const mod = ["impossible", "corner", "reversed"];
+    
+    const selectedMod = mod[Math.floor(Math.random() * mod.length)];
+    
+    useStore.getState().addMod(selectedMod);
+    
+    setTimeout(() => {
+        useStore.getState().removeMod(selectedMod);
+    }, 1000);
+}
+
+export const wizz = () => {
+    gsap.to("#board", {
+        duration: 0.01,
+        x: "+=20%",
+        yoyo: true,
+        repeat: 10,
+    });
+}
 
 export const reversedControls = (e, direction) => {
     switch (e.keyCode) {
