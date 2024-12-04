@@ -16,7 +16,7 @@ const Toggle = ({ mod }) => {
     };
     
     useEffect(() => {
-        console.log(storeMod);
+        //console.log(storeMod);
     }, [storeMod]);
     
     return (
