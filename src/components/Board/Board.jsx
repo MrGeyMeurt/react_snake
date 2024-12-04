@@ -12,6 +12,8 @@ import {
 } from "../../utils/utils";
 import GameOver from "../GameOver/GameOver";
 import useStore from "../../utils/store";
+import Submit from "../Submit/Submit";
+import Scoreboard from "../Scoreboard/Scoreboard";
 
 const Board = () => {
     const { mod, removeMod } = useStore();
@@ -22,10 +24,13 @@ const Board = () => {
     
     const [trapArray, setTrapArray] = useState([]);
     const [foodArray, setFoodArray] = useState([]);
+
+    const [hasEnteredResults, setHasEnteredResults] = useState(false);
     
     const [gameOver, setGameOver] = useState(false);
     const [speed, setSpeed] = useState(0.2);
     const [score, setScore] = useState(0);
+    const [death, setDeath] = useState(0);
     
     const timer = useRef(0);
     const foodTimer = useRef(0);
@@ -36,13 +41,15 @@ const Board = () => {
     const gameIsOver = () => {
         gsap.ticker.remove(gameLoop);
         
+        setDeath(death + 1);
+        
         setGameOver(true);
         
         //console.log("game over") // fin du jeu
     };
     
-    const IsOutOfBorder = () => {
-        let head = snakeData[snakeData.length - 1];
+    const IsOutOfBorder = (head) => {
+        //let head = snakeData[snakeData.length - 1];
         //console.log(head);
         
         if (head[0] >= 500 || head[1] >= 500 || head[0] < 0 || head[1] < 0) {
@@ -104,8 +111,8 @@ const Board = () => {
         newSnakeData.push(head);
         newSnakeData.shift();
         
-        const snakeCollapsed = hasCollapsed();
-        const outOfBorder = IsOutOfBorder();
+        const snakeCollapsed = hasCollapsed(head);
+        const outOfBorder = IsOutOfBorder(head);
         const snakeAteFood = hasEatenItem({
             getter: foodArray,
             setter: setFoodArray,
@@ -144,9 +151,9 @@ const Board = () => {
         }   
     };
     
-    const hasCollapsed = () => {
+    const hasCollapsed = (head) => {
         let snake = [...snakeData];
-        let head = snake[snake.length - 1];
+        //let head = snake[snake.length - 1];
         
         //retire la dernière case du tableau
         snake.pop();
@@ -174,12 +181,24 @@ const Board = () => {
         : defaultControls(e, direction);
     };
     
-    const addItem = ({getter, setter}) => {
-        //console.log("add food");
-        //génération cooredonnées
+    const addItem = ({ getter, setter }) => {
+        // génération de coordonnées
         const coordinates = generateRandomCoordinates(mod);
         
-        //maj du state
+        //fusion des deux tableaux
+        const array = [...foodArray, ...trapArray];
+        
+        //test pour savoir si un item est déjà existant à cet endroit
+        const itemAlreadyExistsHere = array.some(
+            (item) => item.x === coordinates.x && coordinates.y === item.y
+        );
+        
+        // si ça existe déjà, rappeler la fonction
+        if (itemAlreadyExistsHere) {
+            addItem({ getter, setter });
+            return;
+        }
+        
         setter((oldArray) => [...oldArray, coordinates]);
     };
     
@@ -255,12 +274,22 @@ const Board = () => {
     }, [snakeData]);
     
     return (
+        <>
+        {gameOver && <GameOver replay={replay} />}
+        {gameOver && !hasEnteredResults && (
+            <Submit
+            score={score}
+            death={death}
+            setHasEnteredResults={setHasEnteredResults}
+            />
+        )}
+        {gameOver && <Scoreboard />}
+        
         <div id="board" className={s.board}>
         <Snake data={snakeData} />
         
         <span className={s.score}>Score: {score}</span>
-        
-        {gameOver && <GameOver replay={replay}/>}
+        <span className={s.death}>Death: {death}</span>
         
         {foodArray.map((coordinates) => (
             <Item key={coordinates.id} coordinates={coordinates} type="food"/>
@@ -270,6 +299,7 @@ const Board = () => {
             <Item key={coordinates.id} coordinates={coordinates} type="trap"/>
         ))}
         </div>
+        </>
     );
 };
 
