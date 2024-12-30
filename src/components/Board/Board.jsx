@@ -13,7 +13,6 @@ import {
 import GameOver from "../GameOver/GameOver";
 import useStore from "../../utils/store";
 import Submit from "../Submit/Submit";
-import Scoreboard from "../Scoreboard/Scoreboard";
 
 const Board = () => {
     const { mod, removeMod } = useStore();
@@ -24,10 +23,11 @@ const Board = () => {
     
     const [trapArray, setTrapArray] = useState([]);
     const [foodArray, setFoodArray] = useState([]);
-
+    
     const [hasEnteredResults, setHasEnteredResults] = useState(false);
     
     const [gameOver, setGameOver] = useState(false);
+    const [gamePause, setGamePause] = useState(false);
     const [speed, setSpeed] = useState(0.2);
     const [score, setScore] = useState(0);
     const [death, setDeath] = useState(0);
@@ -173,6 +173,16 @@ const Board = () => {
     
     const onKeyDown = (e) => {
         //console.log(e);
+
+        if (e.code === "KeyP") {
+            // console.log("p pressed");
+            gameIsPause()
+        }
+
+        if (e.code === "KeyR") {
+            replay()
+        }
+
         if (canChangeDirection.current === false) return;
         canChangeDirection.current = false;
         
@@ -262,7 +272,7 @@ const Board = () => {
         setSpeed (0.2);
         setScore(0)
     }
-    
+
     useEffect(() => {
         window.addEventListener("keydown",onKeyDown);
         gsap.ticker.add(gameLoop);
@@ -272,10 +282,23 @@ const Board = () => {
             gsap.ticker.remove(gameLoop);
         };
     }, [snakeData]);
+
+    const gameIsPause = () => {
+        setGamePause((prevPaused) => {
+          if (prevPaused) {
+            gsap.ticker.add(gameLoop);
+          } else {
+            gsap.ticker.remove(gameLoop);
+            timer.current = 0;
+            foodTimer.current = 0;
+            trapTimer.current = 0;
+          }
+          return !prevPaused;
+        });
+      };
     
     return (
         <>
-        {gameOver && <GameOver replay={replay} />}
         {gameOver && !hasEnteredResults && (
             <Submit
             score={score}
@@ -283,13 +306,20 @@ const Board = () => {
             setHasEnteredResults={setHasEnteredResults}
             />
         )}
-        {gameOver && <Scoreboard />}
         
         <div id="board" className={s.board}>
+        
+        {gameOver && <GameOver replay={replay} />}
+
+        {gamePause && (
+            <div className={s.pause}>
+            <h1>Pause</h1>
+            </div>
+        )}
         <Snake data={snakeData} />
         
-        <span className={s.score}>Score: {score}</span>
-        <span className={s.death}>Death: {death}</span>
+        <h3 className={s.score}>Score: {score}</h3>
+        <h3 className={s.death}>Death: {death}</h3>
         
         {foodArray.map((coordinates) => (
             <Item key={coordinates.id} coordinates={coordinates} type="food"/>

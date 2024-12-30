@@ -1,11 +1,12 @@
 .wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
-    cursor: pointer;
+    gap: 20px;
 
     .mod {
-        font-size: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
         color: white;
     }
 
@@ -13,20 +14,27 @@
         width: 40px;
         height: 20px;
         border-radius: 24px;
-        background-color: white;
+        background-color: #ffbf69;
         display: flex;
         align-items: center;
+        user-select: none;
+        cursor: pointer;
+
+        &_active {
+            background-color: #CBF3F0;
+        }
     }
     
     .switch {
         height: 18px;
         width: 18px;
         border-radius: 50%;
-        background-color: black;
-        transition: all 0.2;
+        background-color: white;
+        transition: transform .2s ease-out;
 
         &_active {
             transform: translateX(120%);
+            background-color: #2EC4B6;
         }
     }
 }

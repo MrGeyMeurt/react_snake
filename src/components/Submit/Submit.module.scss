@@ -4,6 +4,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+
+    h1 {
+        margin: auto;
+        user-select: none;
+    }
     
     input {
         outline: none;
@@ -11,6 +16,5 @@
         font-size: 24px;
         border: none;
         border-bottom: solid 1px red;
-        color: white;
     }
 }

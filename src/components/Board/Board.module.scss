@@ -3,24 +3,38 @@
     background-color: white;
     width: 500px;
     height: 500px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
+    position: relative;
     
     .score {
         position: absolute;
-        top: 100%;
+        bottom: 100%;
         left: 0;
         color: white;
     }
 
     .death {
         position: absolute;
-        top: 100%;
+        bottom: 100%;
         right: 0;
         color: white;
+    }
+}
+
+.pause {
+    background-color: #3f71a4a5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    user-select: none;
+
+    span {
+        color: white;
+        font-size: 50px;
     }
 }

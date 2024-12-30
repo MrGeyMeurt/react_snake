@@ -1,23 +1,35 @@
-.scoreboard {
-    position: absolute;
-    z-index: 100;
-    left: 10%;
-    top: 15%;
-    color: white;
-  }
+.header,
+.result {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 20px;
+  position: relative;
+  width: 100%;
   
-  .header {
-    span {
-      font-weight: bold;
-      font-size: 20px;
-    }
+  span {
+    width: 100px;
   }
-  .header,
-  .result {
+}
+
+
+.container-score {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+  
+  .row-score {
+    align-items: flex-start;
     display: flex;
-    gap: 50px;
-  
-    span {
-      width: 100px;
-    }
+    flex: 1;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 15px;
+    position: relative;
   }
+}

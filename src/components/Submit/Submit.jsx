@@ -51,6 +51,7 @@ const Submit = ({ score, death, setHasEnteredResults }) => {
 
   return (
     <form className={s.form} onSubmit={onSubmit}>
+      <h1>Loser</h1>
       <input
         type="text"
         value={name}

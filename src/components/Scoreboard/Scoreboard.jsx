@@ -6,18 +6,18 @@ const Scoreboard = () => {
 
   return (
     <div className={s.scoreboard}>
-      <h1>Scoreboard</h1>
+      <h2>Leaderboard</h2>
       <div className={s.results}>
         <div className={s.header}>
-          <span>Name</span>
-          <span>Score</span>
-          <span>Deaths</span>
+          <h3>Name</h3>
+          <h3>Score</h3>
+          <h3>Deaths</h3>
         </div>
         {results.map((result, i) => (
           <div className={s.result} key={result.name + i}>
-            <span>{result.name}</span>
-            <span>{result.score}</span>
-            <span>{result.death}</span>
+            <p>{result.name}</p>
+            <p>{result.score}</p>
+            <p>{result.death}</p>
           </div>
         ))}
       </div>
