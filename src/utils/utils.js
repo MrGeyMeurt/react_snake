@@ -23,7 +23,7 @@ export const flashUser = () => {
 
 export const triggerMode = () => {
     console.log("effet n2");
-    const mod = ["impossible", "corner", "reversed"];
+    const mod = ["Impossible", "Corner", "Reversed"];
     
     const selectedMod = mod[Math.floor(Math.random() * mod.length)];
     
@@ -31,7 +31,7 @@ export const triggerMode = () => {
     
     setTimeout(() => {
         useStore.getState().removeMod(selectedMod);
-    }, 1000);
+    }, 3600);
 }
 
 export const wizz = () => {
@@ -170,7 +170,7 @@ export const generateRandomCoordinates = (mod) => {
     
     let x, y;
     
-    if (mod.includes('corner')) {
+    if (mod.includes('Corner')) {
         //logique pour générer les coordonnées du mod
         const side = Math.random();
         if (side <= 0.25) {

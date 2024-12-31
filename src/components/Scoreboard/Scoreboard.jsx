@@ -5,7 +5,7 @@ const Scoreboard = () => {
   const { results } = useStore();
 
   return (
-    <div className={s.scoreboard}>
+    <div>
       <h2>Leaderboard</h2>
       <div className={s.results}>
         <div className={s.header}>

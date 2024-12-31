@@ -1,5 +1,4 @@
-.header,
-.result {
+.header,.result {
   align-items: flex-start;
   align-self: stretch;
   display: flex;
@@ -12,7 +11,6 @@
     width: 100px;
   }
 }
-
 
 .container-score {
   align-items: flex-start;

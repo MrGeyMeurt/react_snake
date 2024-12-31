@@ -140,7 +140,7 @@ const Board = () => {
             if (snakeAteFood === true) {
                 //agrandir le snake
                 newSnakeData.unshift([]);
-                setScore(score + 0);
+                setScore(score + 1);
                 if (speed > 0.08) {
 
                     setSpeed(speed - 0.03);
@@ -186,7 +186,7 @@ const Board = () => {
         if (canChangeDirection.current === false) return;
         canChangeDirection.current = false;
         
-        mod.includes("reversed")
+        mod.includes("Reversed")
         ? reversedControls(e, direction)
         : defaultControls(e, direction);
     };
@@ -230,7 +230,7 @@ const Board = () => {
         }
         
         // pour les pièges
-        if (trapTimer.current > 3 && trapArray.length < 3 ) {
+        if (trapTimer.current > 3 && trapArray.length < 15 ) {
             trapTimer.current = 0;
             //console.log("pop");
             addItem({
@@ -239,7 +239,7 @@ const Board = () => {
             });
         }
         
-        if (timer.current > (mod.includes("impossible") ? 0.02 : speed)) {
+        if (timer.current > (mod.includes("Impossible") ? 0.02 : speed)) {
             //console.log("move snake");
             timer.current = 0;
             moveSnake();
@@ -249,9 +249,9 @@ const Board = () => {
     
     const replay = () => {
         //replay game
-        removeMod("corner");
-        removeMod("impossible");
-        removeMod("reversed");
+        removeMod("Corner");
+        removeMod("Impossible");
+        removeMod("Reversed");
         
         //reset game
         setGameOver(false);

@@ -77,7 +77,7 @@ function App() {
                                 <div className="flex flex-container">
                                     <h2>Source code</h2>
                                         <div className="flex flex-container" style={{ gap: "10px", flexDirection: "row" }}>
-                                            <img src="./media/github.svg" alt="Github logo" height={25}/>
+                                            <img src="./media/githubw.svg" alt="Github logo" height={25}/>
                                             <a href="https://github.com/MrGeyMeurt/react_snake" target="_blank" rel="noreferrer">Github repository</a>
                                         </div>                                
                                 </div>
