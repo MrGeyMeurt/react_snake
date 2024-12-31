@@ -7,7 +7,7 @@ import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 function App() {
     const { skin, setSkin } = useStore();
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    const { getRootProps, getInputProps } = useDropzone({
         accept: {
             "image/jpeg": [],
             "image/png": [],
@@ -76,17 +76,20 @@ function App() {
                                 
                                 <div className="flex flex-container">
                                     <h2>Source code</h2>
-                                    <a href="https://github.com/MrGeyMeurt/react_snake" target="_blank" rel="noreferrer">Github repository</a>
+                                        <div className="flex flex-container" style={{ gap: "10px", flexDirection: "row" }}>
+                                            <img src="./media/github.svg" alt="Github logo" height={25}/>
+                                            <a href="https://github.com/MrGeyMeurt/react_snake" target="_blank" rel="noreferrer">Github repository</a>
+                                        </div>                                
                                 </div>
                             </div>
 
                             <div className="flex flex-container" style={{ alignSelf: "start"}}>
                                 <div className="flex flex-container">
-                                    <h2>Modding</h2>
+                                    <h2>Game modes</h2>
                                         <div className="flex" style={{ flexDirection: "column", gap: "10px" }}>
-                                            <Toggle mod={"corner"} />
-                                            <Toggle mod={"impossible"} />
-                                            <Toggle mod={"reversed"} />
+                                            <Toggle mod={"Corner"} />
+                                            <Toggle mod={"Impossible"} />
+                                            <Toggle mod={"Reversed"} />
                                         </div>
                                 </div>
 
@@ -96,7 +99,7 @@ function App() {
                             </div>
                         </div>
                     </div>
-                    <aside className="flex" style={{ alignSelf: "unset" }}>
+                    <aside className="flex" style={{ alignSelf: "unset", alignItems: "center" }}>
                         <Board />
                         <div className="container-controls">
                             <div className="flex" style={{flexDirection: "row", gap: "8px"}}>

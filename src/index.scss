@@ -33,6 +33,29 @@ body {
   gap: 100px;
   padding: 60px;
   position: relative;
+
+  a {
+    text-decoration: none;
+    width: fit-content;
+    align-self: center;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      background: $text;
+      transition: width .2s ease-out;
+  
+    }
+    
+    &:hover::after {
+      width: 75%;
+    }
+  }
+  
   
   .flex {
     display: flex;

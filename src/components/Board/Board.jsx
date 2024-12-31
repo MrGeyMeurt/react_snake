@@ -140,12 +140,12 @@ const Board = () => {
             if (snakeAteFood === true) {
                 //agrandir le snake
                 newSnakeData.unshift([]);
-                setScore(score + 10);
-                if (speed > 0.05) {
+                setScore(score + 0);
+                if (speed > 0.08) {
+
+                    setSpeed(speed - 0.03);
                     console.log("speed =", speed);
-                    
-                    setSpeed(speed - 0.02);
-                }   
+                }
             }
             setSnakeData(newSnakeData);
         }   
