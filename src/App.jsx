@@ -30,7 +30,7 @@ function App() {
     useEffect(() => {
         
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 600);
+            setIsMobile(window.innerWidth < 1000);
         };
         
         checkMobile();
